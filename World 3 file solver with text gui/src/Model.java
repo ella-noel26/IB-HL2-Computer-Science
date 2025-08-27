@@ -91,12 +91,42 @@ public class Model implements WordleModel{
         lastGuess.add(lastSentGuess.charAt(2));
         lastGuess.add(lastSentGuess.charAt(3));
         lastGuess.add(lastSentGuess.charAt(4));
-
-
+        for (int i = wordsAndPoints.size() - 1; i >= 0; i++){
+            for (int j = 0; i < results.length; i++){
+                if (results [j] == 0 && lastGuess.get(j) == wordsAndPoints.get(i).get(j)){
+                    wordsAndPoints.remove(i);
+                }
+                /*if (results[j] == 0 && containsChar(lastGuess.get(j), wordsAndPoints.get(i))){
+                    wordsAndPoints.remove(i);
+                }*/
+                else if (results[j] == 1 && !containsCharNotHere(lastGuess.get(j), wordsAndPoints.get(i), j)){
+                    wordsAndPoints.remove(i);
+                }
+                else if (results[j] == 2 && lastGuess.get(j) != wordsAndPoints.get(i).get(j)){
+                    wordsAndPoints.remove(i);
+                }
+            }
+        }
+        updateOccurences();
     }
 
-    //method saying it doesnt have that letter anywhere
-    //method saying it has that letter but not in that spot
+    private boolean containsChar(char letter, ArrayList<Character> word){
+        for (int i = 0; i < word.size(); i++){
+            if (letter == word.get(i)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean containsCharNotHere(char letter, ArrayList<Character> word, int position){
+        for (int i = 0; i < word.size(); i++){
+            if (letter == word.get(i) && i != position){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
