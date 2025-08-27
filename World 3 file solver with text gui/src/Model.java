@@ -61,7 +61,7 @@ public class Model implements WordleModel{
             for (int k = 0; k < 5; k++){
                 points += letterOccurences[word.get(j)-97][k];
             }
-            points += letterOccurences[word.get(j)-97][j];
+            //points += letterOccurences[word.get(j)-97][j];
         }
         return points;
     }
@@ -107,7 +107,7 @@ public class Model implements WordleModel{
                             wordsAndPoints.remove(i);
                             removed = true;
                         } //removes word if it has a letter that was gray at another spot and the letter is only there one time, 5/22/2025 isnt working
-                        
+                        //add count of letters to figure out and make it efficients
                         else if (results[j] == 0 && occurencesOfLetter(wordsAndPoints.get(i), lastGuess.get(j)) > 1){
                             System.out.println(i);
                             int[] whereLetterIs = new int[5];
