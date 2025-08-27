@@ -1,6 +1,7 @@
 public class GUI {
-    
-    public GUI(){
+    Controller controller;
 
+    public GUI(){
+        this.controller = new Controller();
     }
 }

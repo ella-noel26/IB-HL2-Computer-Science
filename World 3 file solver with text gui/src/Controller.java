@@ -19,6 +19,7 @@ public class Controller implements WordleController{
     
     public void setColor(int col, int color){
         wordsGrid[currentLine][col] = color;
+        System.out.println("setColor");
     }
     public void submit(){
         model.update(wordsGrid[currentLine]);
@@ -30,6 +31,7 @@ public class Controller implements WordleController{
         for (int i = 0; i < 5; i++){
             arr[i] = str.charAt(i);
         }
+        System.out.println("reporting guess");
         return arr;
     }
 }
